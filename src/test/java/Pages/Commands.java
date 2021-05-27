@@ -336,7 +336,7 @@ public class Commands {
         webScrollPlus.click();
     }
 
-    public static void tempCompare(int value1, int value2) {
+    public void tempCompare(int value1, int value2) {
         Assert.assertEquals(value1,value2,"values do not match");
 
     }
