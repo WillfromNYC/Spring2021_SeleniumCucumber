@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 
 public class LoginSD {
 
-    @Given(value = "I am on Darksky homepage")
+
     public void openDarksky() {
         Web web = new Web();
         web.openUrl("https://darksky.net");
@@ -39,11 +39,14 @@ public class LoginSD {
         commands.tempCompare(summaryTemp();summaryLowTempInt, scrollTodayLowTempInt);
         commands.tempCompare(summaryHighTempInt, scrollTodayHighTempInt);
         }*/
-    }
-
-
-
-
 
 
 }
+
+
+
+
+
+
+
+

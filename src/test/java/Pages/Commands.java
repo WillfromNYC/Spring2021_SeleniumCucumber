@@ -1,13 +1,14 @@
 package Pages;
 
 import DriverWrapper.Web;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.Wait;
 import org.testng.Assert;
 
+import java.time.Duration;
 import java.util.List;
 import java.util.Set;
 
@@ -40,6 +41,13 @@ public class Commands {
      */
     public void clickThis(WebElement element) {
         element.click();
+        Wait fWait = new FluentWait(Web.getDriver()) //Web not web because getDriver is static
+                .withTimeout(Duration.ofSeconds(20))
+                .pollingEvery(Duration.ofSeconds(1))
+                .ignoring(NoSuchElementException.class)
+                .ignoring(NoAlertPresentException.class)
+                .ignoring(StaleElementReferenceException.class)
+                .withMessage("Element is not found within 30 seconds");
     }
 
     /**
@@ -49,6 +57,13 @@ public class Commands {
      */
     public void clickThis(By locator) {
         getElement(locator).click();
+        Wait fWait = new FluentWait(Web.getDriver()) //Web not web because getDriver is static
+                .withTimeout(Duration.ofSeconds(30))
+                .pollingEvery(Duration.ofSeconds(1))
+                .ignoring(NoSuchElementException.class)
+                .ignoring(NoAlertPresentException.class)
+                .ignoring(StaleElementReferenceException.class)
+                .withMessage("Element is not found within 30 seconds");
 
     }
 
@@ -142,7 +157,7 @@ public class Commands {
      * Input: WebElement
      * Return Type: boolean
      */
-    public String getElementText(WebElement element) {
+    public String  n(WebElement element) {
         return element.getText();
     }
 
@@ -291,6 +306,18 @@ public class Commands {
         Web.getDriver().switchTo().window(handle);
     }
 
+
+
+
+
+
+
+
+
+
+
+
+    //Need to move to another Command/SD file
     public int TempElementToInt(By locator) {
         Commands commands = new Commands();
         WebElement summaryTempIntWeb = getElement(locator);
